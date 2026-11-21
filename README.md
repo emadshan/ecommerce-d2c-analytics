@@ -222,3 +222,11 @@ Generated tables are deterministic for a fixed seed and order count. Results may
 **GitHub:** https://github.com/emadshan/ecommerce-d2c-analytics
 
 *Built as a hands-on portfolio case study demonstrating end-to-end data analytics, SQL, Python, business intelligence, and business problem-solving.*
+
+## Connect
+
+I'm interested in Data Analyst, Business Analyst and Analytics Engineer opportunities.
+
+- **LinkedIn:** [Emad Shanavas](https://www.linkedin.com/in/emadshan/)
+- **GitHub:** [emadshan](https://github.com/emadshan)
+- **Email:** [emadshanavasmk@gmail.com](mailto:emadshanavasmk@gmail.com)
