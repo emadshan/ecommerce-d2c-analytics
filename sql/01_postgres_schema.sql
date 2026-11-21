@@ -1,0 +1,12 @@
+CREATE SCHEMA IF NOT EXISTS raw;
+CREATE SCHEMA IF NOT EXISTS staging;
+CREATE SCHEMA IF NOT EXISTS mart;
+CREATE TABLE IF NOT EXISTS raw.customers (customer_id text PRIMARY KEY, city text, state text, pincode text, city_tier text, created_at timestamp, acquisition_channel text, email_opt_in boolean, customer_city_raw text);
+CREATE TABLE IF NOT EXISTS raw.products (product_id text PRIMARY KEY, product_name text, category text, mrp_inr numeric(12,2), unit_cost_inr numeric(12,2), gst_rate numeric(5,4), active boolean);
+CREATE TABLE IF NOT EXISTS raw.orders (order_id text PRIMARY KEY, customer_id text, order_date timestamp, channel text, device text, payment_method text, order_status text, delivery_outcome text, city text, state text, pincode text, city_tier text, discount_rate numeric(7,4), shipping_fee_inr numeric(12,2), order_value_inr numeric(12,2), estimated_cogs_inr numeric(12,2), sales_platform text, platform_type text);
+CREATE TABLE IF NOT EXISTS raw.order_items (order_item_id text PRIMARY KEY, order_id text, product_id text, quantity integer, unit_price_inr numeric(12,2), line_revenue_inr numeric(12,2), line_cogs_inr numeric(12,2));
+CREATE TABLE IF NOT EXISTS raw.returns (return_id text PRIMARY KEY, order_id text, return_date timestamp, return_reason text, refund_amount_inr numeric(12,2), return_status text);
+CREATE TABLE IF NOT EXISTS raw.events (event_id text PRIMARY KEY, session_id text, customer_id text, order_id text, event_timestamp timestamp, event_name text, device text, channel text, utm_campaign text, is_bot boolean, page_path text, ingested_at timestamp);
+CREATE TABLE IF NOT EXISTS raw.campaigns (campaign_id text PRIMARY KEY, campaign_name text, channel text, campaign_type text);
+CREATE TABLE IF NOT EXISTS raw.daily_ad_spend (spend_date date, campaign_id text, spend_inr numeric(14,2), impressions bigint, PRIMARY KEY(spend_date,campaign_id));
+CREATE TABLE IF NOT EXISTS raw.experiment_assignments (experiment_id text, customer_id text, variant text, assigned_at timestamp, converted integer, refund_or_complaint integer, PRIMARY KEY(experiment_id,customer_id));
